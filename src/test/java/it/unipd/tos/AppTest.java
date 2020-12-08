@@ -143,4 +143,13 @@ public class AppTest {
         assertEquals(52.5D, orderPrice, 0.0D);
     }
 
+    @Test (expected = TakeAwayBillException.class) 
+    public void testOrdiniConPiuDi30Elementi() throws TakeAwayBillException {
+        for(int i = 0; i < 31; i++) {
+            orderItems.add(gelato_bananaSplit); 
+        }
+        
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+    }
+
 }
