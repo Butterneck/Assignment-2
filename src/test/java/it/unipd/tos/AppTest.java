@@ -51,7 +51,7 @@ public class AppTest {
        orderPrice = app.getOrderPrice(orderItems,normalUser); 
     }
 
-    /*@Test 
+    @Test 
     public void testSconto50SulGelatoMenoCaro() throws TakeAwayBillException {
         orderItems.add(gelato_coppaNafta); 
         orderItems.add(gelato_coppaNafta); 
@@ -63,6 +63,6 @@ public class AppTest {
 
         orderPrice = app.getOrderPrice(orderItems,normalUser);  
         assertEquals(27.25D, orderPrice, 0.0D);
-    }*/
+    }
 
 }
