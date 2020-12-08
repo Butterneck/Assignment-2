@@ -3,12 +3,16 @@
 ////////////////////////////////////////////////////////////////////
 package it.unipd.tos;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import it.unipd.tos.business.TakeAwayBill;
 import it.unipd.tos.business.exception.TakeAwayBillException;
 import it.unipd.tos.model.MenuItem;
+import it.unipd.tos.model.Order;
 import it.unipd.tos.model.User;
 import it.unipd.tos.model.MenuItem.ItemType;
 
@@ -59,7 +63,26 @@ public class App implements TakeAwayBill {
         return price;
     }
 
-    public static void main(String[] args) {
+    public List<Order> getFreeOrders(List<Order> order) {
+        List<Order> freeOrders = new ArrayList<Order>();
+
+        for (Order o : order) {
+            if (o.getUser().getAge() < 18 && !freeOrders.contains(o)
+                    && (!o.getTimeOrder().isBefore(LocalTime.of(18, 0, 0))
+                            && !o.getTimeOrder().isAfter(LocalTime.of(19, 0, 0)))) { // controllo orario
+
+                freeOrders.add(o);
+            }
+        }
+
+        if (freeOrders.size() >= 10) {
+            Collections.shuffle(freeOrders);
+
+            freeOrders = freeOrders.subList(0, 10);
+            freeOrders.stream().forEach(element -> element.setFree());
+        }
+
+        return freeOrders;
 
     }
 }
