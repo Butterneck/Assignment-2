@@ -3,6 +3,6 @@
 
 # IceCream Shop Manager
 
-Assignment 2 del corso Tecnologie Open Source dell'Università degli Studi di Padova 2020/2021
+Assignment 2 del corso Tecnologie Open Source dell'Università degli Studi di Padova 2020/2021.
 
 Filippo Pinton 1187361
