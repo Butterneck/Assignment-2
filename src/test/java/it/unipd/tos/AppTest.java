@@ -200,4 +200,11 @@ public class AppTest {
         assertEquals(0, freeOrder.size());
     }
 
+    @Test(expected = TakeAwayBillException.class)
+    public void testEccezioneElementoNulloNellOrdine() throws TakeAwayBillException {
+        orderItems.add(budino_pinguino);
+        orderItems.add(null);
+        orderPrice = app.getOrderPrice(orderItems, normalUser);
+    }
+
 }
