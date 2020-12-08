@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/Butterneck/Assignment-2.svg?branch=master)](https://travis-ci.com/nicomanto/Assignment2)
-[![Coverage Status](https://coveralls.io/repos/github/Butterneck/Assignment-2/badge.svg?branch=master)](https://coveralls.io/github/nicomanto/Assignment2?branch=master)
+[![Build Status](https://travis-ci.com/Butterneck/Assignment-2.svg?branch=master)](https://travis-ci.com/Butterneck/Assignment-2)
+[![Coverage Status](https://coveralls.io/repos/github/Butterneck/Assignment-2/badge.svg?branch=master)](https://coveralls.io/github/Butterneck/Assignment-2?branch=master)
 
 # IceCream Shop Manager
 
