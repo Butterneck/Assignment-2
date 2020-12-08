@@ -62,7 +62,85 @@ public class AppTest {
         orderItems.add(bevanda_cocaCola);
 
         orderPrice = app.getOrderPrice(orderItems,normalUser);  
-        assertEquals(27.25D, orderPrice, 0.0D);
+        assertEquals(27.0D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testConSconto10ESconto50() throws TakeAwayBillException {
+        for(int i = 0; i < 6; i++) {
+            orderItems.add(gelato_bananaSplit); 
+        }
+
+        for(int i = 0; i < 5; i++) {
+            orderItems.add(budino_biancaneve); 
+        }
+
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(59.4D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testTotalPriceWithoutElement() throws TakeAwayBillException {      
+       orderPrice = app.getOrderPrice(orderItems,normalUser); 
+       assertEquals(0.0D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testCon5GelatiQuindiNoSconto() throws TakeAwayBillException {
+        orderItems.add(gelato_coppaNafta); 
+        orderItems.add(gelato_coppaNafta); 
+        orderItems.add(gelato_coppaNafta); 
+        orderItems.add(gelato_coppaNafta);
+        orderItems.add(gelato_coppaNafta);
+        orderItems.add(bevanda_cocaCola);
+        orderItems.add(budino_pinguino); 
+
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(22.5D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testSconto10ConOrdineConTotaleMaggiore50SuGelatiEBudini() throws TakeAwayBillException {
+        for(int i=0; i<5;++i){
+            orderItems.add(gelato_bananaSplit);
+        }
+
+        for(int i=0;i<4;++i){
+            orderItems.add(budino_pinguino);
+        }
+
+        orderItems.add(bevanda_cocaCola);
+
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(51.75D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testSconto10ConOrdineConTotaleMaggiore50NONSuGelatiEBudini() throws TakeAwayBillException {
+        for(int i=0; i<10;++i){
+            orderItems.add(bevanda_cocaCola);
+        }
+
+        for(int i=0;i<4;++i){
+            orderItems.add(budino_pinguino);
+        }
+
+        orderItems.add(gelato_coppaNafta);
+
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(48.0D, orderPrice, 0.0D);
+    }
+
+    @Test 
+    public void testNoSconto10ConOrdineConTotaleUguale50SuGelatiEBudini() throws TakeAwayBillException {
+        for(int i=0; i<10;++i){
+            orderItems.add(budino_pinguino);
+        }
+
+        orderItems.add(bevanda_cocaCola);
+
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(52.5D, orderPrice, 0.0D);
     }
 
 }
