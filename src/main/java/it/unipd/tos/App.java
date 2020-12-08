@@ -51,6 +51,11 @@ public class App implements TakeAwayBill {
             price *= 0.9D;
         }
 
+        // sovrapprezzo ordini < 10euro
+        if (price < 10 && price > 0) {
+            price += 0.5;
+        }
+
         return price;
     }
 

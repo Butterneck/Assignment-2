@@ -152,4 +152,11 @@ public class AppTest {
         orderPrice = app.getOrderPrice(orderItems,normalUser); 
     }
 
+    @Test 
+    public void testOrdiniInferiori10Euro() throws TakeAwayBillException {
+        orderItems.add(gelato_bananaSplit);
+        orderPrice = app.getOrderPrice(orderItems,normalUser); 
+        assertEquals(7.5D, orderPrice, 0.01D);
+    }
+
 }
