@@ -3,14 +3,25 @@
 ////////////////////////////////////////////////////////////////////
 package it.unipd.tos;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import java.util.List;
+
+import it.unipd.tos.business.TakeAwayBill;
+import it.unipd.tos.business.exception.TakeAwayBillException;
+import it.unipd.tos.model.MenuItem;
+import it.unipd.tos.model.User;
+
+public class App implements TakeAwayBill {
+
+    @Override
+    public double getOrderPrice(List<MenuItem> itemsOrdered, User user) throws TakeAwayBillException {
+        try {
+            return itemsOrdered.stream().mapToDouble(s -> s.getPrice()).sum();
+        } catch (Exception e) {
+            throw new TakeAwayBillException(e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+
     }
 }
